@@ -3,6 +3,11 @@
 
 This is a basic example repository using Gnu make for a reproducible research workflow, as described in detail here: [tilburgsciencehub.com](http://tilburgsciencehub.com/). 
 
+####### Research Question
+
+- To what extend does price depend on host_identity_verified (TRUE vs FALSE)?
+
+
 The main aim of this to have a basic structure, which can be easily adjusted to use in an actual project.  In this example project, the following is done: 
 1. Download and prepare data
 2. Run some analysis
