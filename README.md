@@ -8,7 +8,7 @@ This assignment will be about Airbnb and the relationship between two variables.
 
 
 BLABLA
-bla
+blablabla
 
 # Example of reproducible research workflow 
 
