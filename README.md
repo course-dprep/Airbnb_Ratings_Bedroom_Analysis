@@ -5,7 +5,7 @@ This is a basic example repository using Gnu make for a reproducible research wo
 
 ####### Research Question
 
-- To what extend does price depend on host_identity_verified (TRUE vs FALSE)?
+- To what extent does price depend on host_identity_verified (TRUE vs FALSE)?
 
 
 
