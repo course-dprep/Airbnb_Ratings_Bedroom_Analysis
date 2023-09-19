@@ -7,7 +7,7 @@ This assignment will be about Airbnb and the relationship between two variables.
 # Research Motivation
 
 
-
+BLABLA
 
 
 # Example of reproducible research workflow 
