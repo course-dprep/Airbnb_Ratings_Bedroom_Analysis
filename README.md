@@ -1,9 +1,8 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11726016&assignment_repo_type=AssignmentRepo)
 
 # Introduction
+
 This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are host_identity_verified and price. In this README a reasoning will be given why we chose the two variables, which strategy we will follow, in order for this research to be used in the future.
-
-
 
 # Research Motivation
 
