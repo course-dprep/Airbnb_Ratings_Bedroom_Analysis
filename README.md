@@ -18,6 +18,7 @@ This is a basic example repository using Gnu make for a reproducible research wo
 
 - To what extent does price depend on host_identity_verified (TRUE vs FALSE)?
 
+-
 
 
 The main aim of this to have a basic structure, which can be easily adjusted to use in an actual project.  In this example project, the following is done: 
