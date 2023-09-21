@@ -2,24 +2,22 @@
 
 # Introduction
 
-This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are host_identity_verified and price. In this README a reasoning will be given why we chose the two variables, which strategy we will follow, in order for this research to be used in the future.
+This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are minimum_nights and accommodates. In this README a reasoning will be given why we chose the two variables, which strategy we will follow, in order for this research to be used in the future. 
 
-# Research Motivation
+# 1.Research Motivation
 
+Airbnb is a popular online marketplace and hospitality platform that enables individuals to list, discover, and book accommodations and lodging options in various locations around the world. It allows hosts to rent out their homes or spare rooms to travelers, providing a unique and often more affordable alternative to traditional hotels. The purpose of this project is to find out if large groups are required to stay longer than smaller groups.
 
-BLABLA
-blablabla
+The findings will be relevant for customers of AirBnb that are interested in booking an accommodation. Some customers may be interested to book an accomodation for one person, however maybe the minimum number of nights required to stay is affected by this option. The same can be said about the opposite, when someone wants to book an accomodation but with a bigger group.
 
+# 2.Research Question
+
+- Does the number of people that a place can accommodate have a significant effect on the minimum number of nights required to stay?
+
+# 3.Method
 # Example of reproducible research workflow 
 
 This is a basic example repository using Gnu make for a reproducible research workflow, as described in detail here: [tilburgsciencehub.com](http://tilburgsciencehub.com/). 
-
-####### Research Question
-
-- To what extent does price depend on host_identity_verified (TRUE vs FALSE)?
-
--
-
 
 The main aim of this to have a basic structure, which can be easily adjusted to use in an actual project.  In this example project, the following is done: 
 1. Download and prepare data
