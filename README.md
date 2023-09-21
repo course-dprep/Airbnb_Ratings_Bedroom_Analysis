@@ -14,7 +14,6 @@ The findings will be relevant for customers of AirBnb that are interested in boo
 
 - Does the number of people that a place can accommodate have a significant effect on the minimum number of nights required to stay?
 
-
 # 3.Method
 # Example of reproducible research workflow 
 
