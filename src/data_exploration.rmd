@@ -1,0 +1,111 @@
+---
+title: "data_exploration"
+autor: "team 6"
+output: html_document 
+date: "2023-09-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+```
+
+```{Loadpackages}
+# Loading in packages
+library(tinytex)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readr)
+
+```
+## Creating the dataset and Summarize initial CSV's with Sampling 
+```{r ReadCSVs and summarize them}
+
+listings <- read_csv('listings.csv.gz')
+calendar <- read_csv('calendar.csv.gz')
+reviews <- read_csv('reviews.csv.gz')
+
+P_listings <- listings %>%  slice(1:1000) %>%  mutate_all(list(~.))
+P_calendar <- calendar %>%  slice(1:100000) %>% mutate_all(list(~.))
+P_reviews <- reviews %>%  slice(1:40000) %>% mutate_all(list(~.))
+```
+## Data Exploration & Initial Summaries for Understanding Data
+```{r}
+summary(P_listings)
+print('summary listings is over')
+summary(P_reviews)
+print('summary reviews is over')
+summary(P_calendar)
+print('summary calendar is over')
+print('COMMON data for all csv is listing_id that can be used FOR AGGREGATIONS in analysis')
+
+table(P_listings$accommodates)
+table(P_listings$minimum_minimum_nights)
+
+```
+
+## Changing Column Names of Listings to Understand Required & Allowed Duration
+```{r Changing column names}
+colnames(P_listings[44:47])
+
+P_listings <- P_listings %>%  rename(min_nights_required = minimum_minimum_nights, min_nights_allowed = minimum_maximum_nights, max_nights_required = maximum_minimum_nights, max_nights_allowed = maximum_maximum_nights)
+
+colnames(P_listings[44:47])
+```
+## Adding New Column for Average Duration of Nights Allowed 
+```{r New Column}
+P_listings$avg_stay_duration <- (P_listings$min_nights_allowed + P_listings$max_nights_allowed) /2 
+
+```
+
+## Initial Plots 
+
+```{r Initial Plots Between Accomadates and Avg Duration Nights}
+
+# Scatterplot of accommodates vs min_nights_required (red)
+plot(
+  x = P_listings$accommodates,
+  y = P_listings$min_nights_required,
+  col = "red",
+  pch = 19,  # Use solid dots for scatterplot
+  xlab = "Number of Accommodated Guests",
+  ylab = "Minimum Nights Required",
+  main = "Scatterplot: Accommodates vs Min Nights"
+)
+
+# Scatterplot of accommodates vs avg_stay_duration (green)
+plot(
+  x = P_listings$accommodates,
+  y = P_listings$avg_stay_duration,
+  col = "green",
+  pch = 19,
+  xlab = "Number of Accommodated Guests",
+  ylab = "Average Stay Duration",
+  main = "Scatterplot: Accommodates vs Avg Stay Duration"
+)
+
+# Scatterplot of accommodates vs avg_stay_duration (blue) and min_nights_required (purple)
+plot(
+  x = P_listings$accommodates,
+  y = P_listings$avg_stay_duration,
+  col = "blue",
+  pch = 19,
+  xlab = "Number of Accommodated Guests",
+  ylab = "Duration (Blue) / Minimum Nights (Purple)",
+  main = "Scatterplot: Accommodates vs Duration / Minimum Nights")
+
+# Add points for min_nights_required in purple
+points(
+  x = P_listings$accommodates,
+  y = P_listings$min_nights_required,
+  col = "purple",
+  pch = 19)
+
+# Add a legend to differentiate between avg_stay_duration and min_nights_required
+legend("bottomleft", c("Avg Stay Duration", "Min Nights Required"), fill = c("blue", "purple"))
+
+
+```
+
