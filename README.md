@@ -44,8 +44,8 @@ Measured by a dummy, whether a host is a super host. A super host might indicate
 host_identity_verfied
 Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
 
-listings_per_property
-Calculated by dividing total listings by listings. This indicates if a host is hosting multiple people in the same property. According to inside airbnb, hosts with multiple listings are more likely to be running a business and are unlikely to be living in the property. This could lead to a reduction in ratings, as one of the appeals of Airbnb is not having to share your place with many others, like you would have to in a hotel/motel/hostel.
+bedrooms_per_person
+The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accomodates.
 
 ! We can also include things like the amount of beds, the amount of people a place can accomodate, etc. These three above are examples of what control variables we might want to use, and are not final. It is important we decide on the final model together. 
 
