@@ -72,4 +72,4 @@ unique_neighborhoods <- unique(listings_selected$neighbourhood_cleansed)
 write.csv(unique_neighborhoods, file = "neigbourhoods.csv", row.names = FALSE)
 
 # Saving the merged, cleaned and filtered dataset to the /data folder
-write_csv(listings_selected, "../gen/data-preparation/output/listings_selected.csv")
+write_csv(listings_selected, "../gen/data-preparation/output/listings_selectedv2.csv")
