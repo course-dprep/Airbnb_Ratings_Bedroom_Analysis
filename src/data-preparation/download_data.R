@@ -1,8 +1,12 @@
-# Download dataset 1
-# dir.create('./data/dataset1')  # Uncomment if need to create directory with R
-download.file('https://rgreminger.github.io/files/dataset1.csv','./data/dataset1/dataset1.csv')
+# Import packages
+library(tidyverse)
 
-# Download dataset 2
-# dir.create('./data/dataset2')  # Uncomment if need to create directory with R
-download.file('https://rgreminger.github.io/files/dataset2.csv','./data/dataset2/dataset2.csv')
+# dowloading datasets
+url_listings <- 'http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2023-09-03/data/listings.csv.gz'
+url_calendar <- 'http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2023-09-03/data/calendar.csv.gz'
+url_reviews <- 'http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2023-09-03/data/reviews.csv.gz'
 
+# Read the CSV file directly from the URL
+listings <- read_csv(url_listings)
+calendar <- read_csv(url_calendar)
+reviews <- read_csv(url_reviews)
