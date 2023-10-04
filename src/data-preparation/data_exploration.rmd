@@ -1,0 +1,37 @@
+---
+title: "data_exploration"
+autor: "team 6"
+output: pdf_document 
+date: "2023-10-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, include=FALSE}
+# Loading in packages
+library(tinytex)
+library(tidyverse)
+```
+
+# Loading in the downloaded data
+```{r, echo=FALSE}
+listings <- read_csv("../../data/listings.csv")
+```
+
+# Data Exploration
+```{r listings}
+summary(listings)
+```
+
+## Getting a feel for the observations and colomns
+```{r}
+head(listings)
+```
+
+## Looking at the type of each column in the data set
+```{r}
+glimpse(listings)
+```
