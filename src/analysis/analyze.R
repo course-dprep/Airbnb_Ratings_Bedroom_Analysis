@@ -3,10 +3,11 @@ library(tinytex)
 library(tidyverse)
 
 # loading the dataset
-listings <- read_csv('../../data/listings_cleaned.csv')
+listings <- read_csv('../../gen/temp/listings_cleaned.csv')
 
 # ZOOMING IN ON THE VARIABLES #
 
+pdf("../../gen/temp/testplot.pdf")
 # See categories for host_response_time
 listings %>% group_by(host_response_time) %>% summarise(n())
 
