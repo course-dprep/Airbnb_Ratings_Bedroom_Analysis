@@ -2,7 +2,7 @@
 
 # Introduction
 
-This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are star_rating and price. In this README a reasoning will be given why we chose the two variables, which strategy we will follow, in order for this research to be used in the future. 
+This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are price and the rating of the accomodation. In this README a reasoning will be given why we chose the two variables, the control variables, which strategy we will follow, in order for this research to be used in the future. 
 
 # 1.Research Motivation
 
@@ -17,6 +17,7 @@ This could indicate a curvilinear relationship, leading to us needing a curvilin
 
 - Does the price per night have a significant effect on accomodation ratings?
 
+- 
 # 3.Method
 
 - Still need to extend this part, but it gives a general idea of what I think would be nice to look into. Do not see this as final. For the data prep, we must also look into heteroskedasticity, missing values, etc.
@@ -24,31 +25,35 @@ This could indicate a curvilinear relationship, leading to us needing a curvilin
 For this project, we will grab data from the InsideAirbnb project. More specifically, we will use listing scraping data, which we will prepare for analysis in RStudio. The project is managed on Github. To test if the price per night has a significant effect on accomodation ratings, we will employ a linear model. This linear model will have the following variables.
 
 Dependent variable:
-Accomodation Rating
-Found by looking into the name variable, it contains the rating of every accomodation. This is a variable that has values between 1 and 5 (stars).
+  Review_score_rating
+    Found by looking into the name variable, it contains the rating of every accomodation. This is a variable that has values between 20 and 100. 
 
 Independent variable:
-Price per night
-The price per night, expressed numerically, measured in dollars.
+  avg_price
+    The price per night, expressed numerically, measured in dollars.
 
-To make sure that the found effect is real and not actually a result of a missing factor, we are including control variables. There is no sweet spot for the amount of control variables, so we will use that what the dataset provides us and makes sense to include. 
+To make sure that the found effect is real and not actually a result of a missing factor, we are including control variables. There is no sweet spot for the number of control variables, so we will use that what the dataset provides us and what makes sense to include. 
 
 Control variables:
 
-Note: these are subject to change for now, this is just a first idea.
+*We are not choosing number_of_reviews due to that we already filtered that we only want in our dataset listings that have/ or higher than 25 reviews.
 
+  host_response_rate
+    The percentage of how fast the host response to its customers. Higher the response rate may indicate an higher accomodation rating.
 
-Host_is_superhost
-Measured by a dummy, whether a host is a super host. A super host might indicate perceived quality and lead to higher ratings.
+  host_identity_verfied
+    Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
 
-host_identity_verfied
-Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
+  bedrooms_per_person
+    The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accommodates.
 
-bedrooms_per_person
-The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accommodates.
+  experience_of_host_in_years 
+    The number of years the host works as a host. The higher the number of years of expirience, the more satisfied the customers, the higher the rating they will give.
 
-host_response_rate
-The percentage of how fasat the host response to its customers. Higher the response rate may indicate an higher accomodation rating.
+  in_city_center
+    Whether the accomodation is placed in the city center. If the accomodation is, the customer will be more satisfied with the location, which will conclude in a higher rating.
+    
+
 
 
 ! We can also include things like the amount of beds, the amount of people a place can accomodate, etc. These three above are examples of what control variables we might want to use, and are not final. It is important we decide on the final model together. 
