@@ -10,3 +10,8 @@ url_reviews <- 'http://data.insideairbnb.com/the-netherlands/north-holland/amste
 listings <- read_csv(url_listings)
 calendar <- read_csv(url_calendar)
 reviews <- read_csv(url_reviews)
+
+# Save variables to csv files in raw data folder
+write_csv(listings, "../../data/listings.csv")
+write_csv(calendar, "../../data/calendar.csv")
+write_csv(reviews, "../../data/reviews.csv")

@@ -2,6 +2,11 @@
 library(tinytex)
 library(tidyverse)
 
+# Load in the variables created in the download_data.R file
+listings <- read_csv("../../data/listings.csv")
+calendar <- read_csv("../../data/calendar.csv")
+reviews <- read_csv("../../data/reviews.csv")
+
 # Removing all observations with less than 25 reviews (so individual opinions won't have to much of an impact)
 listings <- listings %>% filter(number_of_reviews >= 25)
 
@@ -55,4 +60,4 @@ listings_selected %>% group_by(id) %>% filter(n()>1)
 unique_neighborhoods <- unique(listings_selected$neighbourhood_cleansed)
 
 # Saving the merged, cleaned and filtered dataset to the /data folder
-write_csv(listings_selected, "../../data/listings_cleaned.csv")
+write_csv(listings_selected, "../../gen/temp/listings_cleaned.csv")
