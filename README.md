@@ -25,8 +25,8 @@ Dependent variable:
     Found by looking into the name variable, it contains the rating of every accomodation. This is a variable that has values between 20 and 100. 
 
 Independent variable:
-  avg_price
-    The price per night, expressed numerically, measured in dollars.
+   bedrooms_per_person
+    The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accommodates.
 
 To make sure that the found effect is real and not actually a result of a missing factor, we are including control variables. There is no sweet spot for the number of control variables, so we will use that what the dataset provides us and what makes sense to include. 
 
@@ -34,14 +34,14 @@ Control variables:
 
 *We are not choosing number_of_reviews due to that we already filtered that we only want in our dataset listings that have/ or higher than 25 reviews.
 
+ avg_price
+    The price per night, expressed numerically, measured in dollars.
+
   host_response_rate
     The percentage of how fast the host response to its customers. Higher the response rate may indicate an higher accomodation rating.
 
   host_identity_verfied
     Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
-
-  bedrooms_per_person
-    The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accommodates.
 
   experience_of_host_in_years 
     The number of years the host works as a host. The higher the number of years of expirience, the more satisfied the customers, the higher the rating they will give.
