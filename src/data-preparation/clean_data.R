@@ -41,6 +41,10 @@ listings_selected <- listings_selected %>% mutate(experience_of_hosts_in_years =
 # Create dummy for listing in city center or not
 listings_selected <- listings_selected %>% mutate(in_city_center = ifelse(neighbourhood_cleansed %in% c('Centrum-Oost', 'Centrum-West'), 1, 0))
 
+# Create variable for bedrooms_per_person
+
+listings_selected$bedrooms_per_person <- listings_selected$bedrooms / listings_selected$accommodates
+
 # Adding a average price list by neigbourhood 
 
 avgprice_by_neighbourhood <- listings_selected %>% group_by(neighbourhood_cleansed) %>% summarise(avg_price_neigbourhood = mean(avg_price, na.rm = TRUE))
@@ -51,7 +55,7 @@ listings_selected<- left_join(listings_selected, avgprice_by_neighbourhood, by =
 
 # New Order for Seeing Avg_Price and Avg_Price_Neighbourhood Together
 
-listings_selected<- listings_selected[,c(1:3,26,4:25)]
+listings_selected<- listings_selected[,c(1:3,26,4:25,27)]
 
 # Checking for duplicate listings
 listings_selected %>% group_by(id) %>% filter(n()>1)
