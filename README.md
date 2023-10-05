@@ -10,14 +10,10 @@ Airbnb is a popular online marketplace and hospitality platform that enables ind
 
 The findings will be relevant for customers of AirBnb that are interested in booking an accommodation. Ratings could be based on value, meaning that the highest ratings might not be found on the high-end of the pricing spectrum at all.
 
-# Remove later ↓
-This could indicate a curvilinear relationship, leading to us needing a curvilinear model. While I know how to do this, it might be beyond the scope of what we want to achieve. Please give it some thought. It determines how we should write our motivation & method. It is not hard to change this down the line if we desire to. 
-
 # 2.Research Question
 
-- Does the price per night have a significant effect on accomodation ratings?
+- Does the number of bedrooms per person have a significant effect on accomodation ratings?
 
-- 
 # 3.Method
 
 - Still need to extend this part, but it gives a general idea of what I think would be nice to look into. Do not see this as final. For the data prep, we must also look into heteroskedasticity, missing values, etc.
