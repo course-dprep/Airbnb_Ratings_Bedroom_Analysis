@@ -63,5 +63,8 @@ listings_selected %>% group_by(id) %>% filter(n()>1)
 # Check uniqueneigbourhoods and check with tripadvisor data for further investigations
 unique_neighborhoods <- unique(listings_selected$neighbourhood_cleansed)
 
+# Remove missing values from variables we are using
+listings_selected <- listings_selected[complete.cases(listings_selected$bedrooms_per_person, listings_selected$host_response_rate), ]
+
 # Saving the merged, cleaned and filtered dataset to the /data folder
 write_csv(listings_selected, "../../gen/temp/listings_cleaned.csv")
