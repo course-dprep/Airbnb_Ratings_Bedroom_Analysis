@@ -19,6 +19,9 @@ library(broom)
 # loading the dataset
 listings <- read_csv('../../gen/temp/listings_cleaned.csv')
 
+# defining the amount of observations
+num_observations <- nrow(listings)
+
 # defining linear models
 
 Reg_Control <- lm(review_scores_rating ~ avg_price + host_response_rate + host_identity_verified + experience_of_hosts_in_years + in_city_center, listings)
@@ -27,7 +30,7 @@ Reg_Full <- lm(review_scores_rating ~ bedrooms_per_person + avg_price + host_res
 
 # Analysing the Effects of Bedrooms per Person on AirBnB Ratings
 
-The following tables show the descriptive statistics of our models, and a regression analysis of the control model and the full model.
+The following tables show the descriptive statistics of our models, and a regression analysis of the control model and the full model. 
 
 ```{r tables, echo=FALSE}
 tab_01 = data.frame(
@@ -44,7 +47,7 @@ kable(
   tab_01,
   col.names = c("Variable", "Mean", "SD", "Min", "Max"),
   digits = 3,
-  caption = "Means, Standard Deviations, Minima, and Maxima of all variables used in the full regression analysis. (n=1299)"
+  caption = sprintf("Means, Standard Deviations, Minima, and Maxima of all variables used in the full regression analysis. n = %d ", num_observations)
 )
 
 Reg_Control %>%
