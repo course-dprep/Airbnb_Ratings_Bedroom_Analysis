@@ -1,0 +1,105 @@
+---
+title: "Analysis AirBnB"
+author: "Team 6"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Loading in packages
+library(tinytex)
+library(tidyverse)
+library(kableExtra)
+library(tidyr)
+library(broom)
+
+# loading the dataset
+listings <- read_csv('../../gen/temp/listings_cleaned.csv')
+
+# defining linear models
+
+Reg_Control <- lm(review_scores_rating ~ avg_price + host_response_rate + host_identity_verified + experience_of_hosts_in_years + in_city_center, listings)
+Reg_Full <- lm(review_scores_rating ~ bedrooms_per_person + avg_price + host_response_rate + host_identity_verified + experience_of_hosts_in_years + in_city_center, listings)
+```
+
+# Analysing the Effects of Bedrooms per Person on AirBnB Ratings
+
+The following tables show the descriptive statistics of our models, and a regression analysis of the control model and the full model.
+
+```{r tables, echo=FALSE}
+tab_01 = data.frame(
+    Variable = c("Review Score", "Bedrooms per Person", "Average Price per Night", "Host Response Rate", "Host Verified", "Host Experience (Years)", "Location: City Centre"),
+    Mean = c(mean(listings$review_scores_rating), mean(listings$bedrooms_per_person), mean(listings$avg_price), mean(listings$host_response_rate), mean(listings$host_identity_verified), mean(listings$experience_of_hosts_in_years), mean(listings$in_city_center)), 
+    SD = c(sd(listings$review_scores_rating), sd(listings$bedrooms_per_person), sd(listings$avg_price), sd(listings$host_response_rate), sd(listings$host_identity_verified), sd(listings$experience_of_hosts_in_years), sd(listings$in_city_center)),
+    Min = c(min(listings$review_scores_rating), min(listings$bedrooms_per_person), min(listings$avg_price), min(listings$host_response_rate), min(listings$host_identity_verified), min(listings$experience_of_hosts_in_years), min(listings$in_city_center)),
+    Max = c(max(listings$review_scores_rating), max(listings$bedrooms_per_person), max(listings$avg_price), max(listings$host_response_rate), max(listings$host_identity_verified), max(listings$experience_of_hosts_in_years), max(listings$in_city_center))
+)
+```
+
+```{r Descriptive Statistics, Linear Regressions, echo=FALSE}
+kable(
+  tab_01,
+  col.names = c("Variable", "Mean", "SD", "Min", "Max"),
+  digits = 3,
+  caption = "Means, Standard Deviations, Minima, and Maxima of all variables used in the full regression analysis. (n=1299)"
+)
+
+Reg_Control %>%
+  tidy() %>%
+  mutate(
+    p.value = scales::pvalue(p.value),
+    term = c("(Intercept)", "Average Price per Night", "Host Response Rate", "Host Verified", "Host Experience (Years)", "Location: City Centre")
+  ) %>%
+  kable(
+    caption = "Coefficient-Level Estimates for the Control Model",
+    col.names = c("Predictor", "B", "SE", "t", "p"),
+    digits = c(0, 3, 3, 2, 3),
+    align = c("l", "r", "r", "r", "r")
+  )
+
+Reg_Full %>%
+  tidy() %>%
+  mutate(
+    p.value = scales::pvalue(p.value),
+    term = c("(Intercept)", "Beds per Person", "Average Price per Night", "Host Response Rate", "Host Verified", "Host Experience (Years)", "Location: City Centre")
+  ) %>%
+  kable(
+    caption = "Coefficient-Level Estimates for the Full Model",
+    col.names = c("Predictor", "B", "SE", "t", "p"),
+    digits = c(0, 3, 3, 2, 3),
+    align = c("l", "r", "r", "r", "r")
+  )
+```
+
+\newpage
+
+# More in-depth tables from here on
+
+```{r Plots, echo=FALSE}
+ggplot(data = listings, aes(x = bedrooms_per_person, y = review_scores_rating)) +
+  geom_point() + # Add points for the scatter plot
+  geom_smooth(method = "lm", se = FALSE) + # Add a linear regression line (change method as needed)
+  labs(x = "Bedrooms per Person", y = "Review Score") + # Add axis labels
+  ggtitle("Scatter Plot of Bedrooms per Person vs. Review Score") # Add a title
+
+# the rest was already in the analyse file, I do not know whose code this is
+
+# Difference in price between city center vs not
+listings %>% group_by(in_city_center) %>% summarise(avg_price = mean(avg_price))
+
+# Difference in location review score city center vs not
+listings %>% group_by(in_city_center) %>% summarise(avg_score_location = mean(review_scores_location))
+
+# Difference in overall review score city center vs not
+listings %>% group_by(in_city_center) %>% summarise(avg_score = mean(review_scores_rating))
+
+# Difference in overall review score for host is superhost vs not
+listings %>% group_by(host_is_superhost) %>% summarise(avg_score = mean(review_scores_rating))
+
+# Difference in checkin review score for host is superhost vs not
+listings %>% group_by(host_is_superhost) %>% summarise(avg_score_checkin = mean(review_scores_checkin))
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
