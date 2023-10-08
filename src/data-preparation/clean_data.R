@@ -1,6 +1,7 @@
 # Loading in packages
 library(tinytex)
 library(tidyverse)
+library(here)
 
 # Load in the variables created in the download_data.R file
 listings <- read_csv("../../data/listings.csv")
@@ -65,6 +66,14 @@ unique_neighborhoods <- unique(listings_selected$neighbourhood_cleansed)
 
 # Remove missing values from variables we are using
 listings_selected <- listings_selected[complete.cases(listings_selected$bedrooms_per_person, listings_selected$host_response_rate), ]
+
+# Creating the gen and temp folders
+script_gen <- here::here()
+gen_path <- file.path(script_gen, "gen")
+dir.create(gen_path)
+script_temp <- here::here()
+temp_path <- file.path(script_temp, "gen/temp")
+dir.create(temp_path)
 
 # Saving the merged, cleaned and filtered dataset to the /data folder
 write_csv(listings_selected, "../../gen/temp/listings_cleaned.csv")
