@@ -2,7 +2,9 @@
 title: "Analysis AirBnB"
 author: "Team 6"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -76,29 +78,12 @@ Reg_Full %>%
 
 # More in-depth tables from here on
 
-```{r Plots, echo=FALSE}
+```{r Plots, echo=FALSE, message=FALSE}
 ggplot(data = listings, aes(x = bedrooms_per_person, y = review_scores_rating)) +
   geom_point() + # Add points for the scatter plot
   geom_smooth(method = "lm", se = FALSE) + # Add a linear regression line (change method as needed)
   labs(x = "Bedrooms per Person", y = "Review Score") + # Add axis labels
   ggtitle("Scatter Plot of Bedrooms per Person vs. Review Score") # Add a title
-
-# the rest was already in the analyse file, I do not know whose code this is
-
-# Difference in price between city center vs not
-listings %>% group_by(in_city_center) %>% summarise(avg_price = mean(avg_price))
-
-# Difference in location review score city center vs not
-listings %>% group_by(in_city_center) %>% summarise(avg_score_location = mean(review_scores_location))
-
-# Difference in overall review score city center vs not
-listings %>% group_by(in_city_center) %>% summarise(avg_score = mean(review_scores_rating))
-
-# Difference in overall review score for host is superhost vs not
-listings %>% group_by(host_is_superhost) %>% summarise(avg_score = mean(review_scores_rating))
-
-# Difference in checkin review score for host is superhost vs not
-listings %>% group_by(host_is_superhost) %>% summarise(avg_score_checkin = mean(review_scores_checkin))
 
 ```
 
