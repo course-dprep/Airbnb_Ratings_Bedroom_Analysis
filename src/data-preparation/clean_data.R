@@ -28,13 +28,24 @@ listings_selected <- listings_selected %>%  mutate(experience_of_hosts_in_years 
 # Cleaning columns
 listings_selected <- listings_selected %>% mutate(id = as.character(id))
 listings_selected <- listings_selected %>% mutate(host_id = as.character(host_id))
-listings_selected <- listings_selected %>% mutate(review_scores_rating = review_scores_rating * 20)
-listings_selected <- listings_selected %>% mutate(review_scores_accuracy = review_scores_accuracy * 20)
-listings_selected <- listings_selected %>% mutate(review_scores_cleanliness = review_scores_cleanliness * 20)
-listings_selected <- listings_selected %>% mutate(review_scores_checkin = review_scores_checkin * 20)
-listings_selected <- listings_selected %>% mutate(review_scores_communication = review_scores_communication * 20)
-listings_selected <- listings_selected %>% mutate(review_scores_location = review_scores_location * 20)
-listings_selected <- listings_selected %>% mutate(review_scores_value = review_scores_value * 20)
+
+# Define the list of columns to be multiplied by 20
+columns_to_multiply <- c(
+  "review_scores_rating",
+  "review_scores_accuracy",
+  "review_scores_cleanliness",
+  "review_scores_checkin",
+  "review_scores_communication",
+  "review_scores_location",
+  "review_scores_value"
+)
+
+# Loop through the columns and multiply each by 20
+for (col in columns_to_multiply) {
+  listings_selected <- listings_selected %>%
+    mutate(!!col := .data[[col]] * 20)
+}
+
 listings_selected <- listings_selected %>% mutate(host_response_rate = as.numeric(str_replace_all(host_response_rate, "[^0-9.]", "")))
 listings_selected <- listings_selected %>% mutate(host_acceptance_rate = as.numeric(str_replace_all(host_acceptance_rate, "[^0-9.]", "")))
 listings_selected <- listings_selected %>% mutate(experience_of_hosts_in_years = as.numeric(sub(" days", "", experience_of_hosts_in_years)))
