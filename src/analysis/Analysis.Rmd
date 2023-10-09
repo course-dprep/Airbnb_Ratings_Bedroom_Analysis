@@ -10,9 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 # Loading in packages
 library(tinytex)
 library(tidyverse)
-library(kableExtra)
 library(tidyr)
 library(broom)
+library(corrr)
+library(kableExtra)
 
 # loading the dataset
 listings <- read_csv('../../gen/temp/listings_cleaned.csv')
@@ -79,30 +80,28 @@ Reg_Full %>%
 
 # More in-depth tables from here on
 
-```{r Plots, echo=FALSE}
+```{r Plots, echo=FALSE, message=FALSE}
 ggplot(data = listings, aes(x = bedrooms_per_person, y = review_scores_rating)) +
   geom_point() + # Add points for the scatter plot
   geom_smooth(method = "lm", se = FALSE) + # Add a linear regression line (change method as needed)
   labs(x = "Bedrooms per Person", y = "Review Score") + # Add axis labels
   ggtitle("Scatter Plot of Bedrooms per Person vs. Review Score") # Add a title
 
-# the rest was already in the analyse file, I do not know whose code this is
-
-# Difference in price between city center vs not
-listings %>% group_by(in_city_center) %>% summarise(avg_price = mean(avg_price))
-
-# Difference in location review score city center vs not
-listings %>% group_by(in_city_center) %>% summarise(avg_score_location = mean(review_scores_location))
-
-# Difference in overall review score city center vs not
-listings %>% group_by(in_city_center) %>% summarise(avg_score = mean(review_scores_rating))
-
-# Difference in overall review score for host is superhost vs not
-listings %>% group_by(host_is_superhost) %>% summarise(avg_score = mean(review_scores_rating))
-
-# Difference in checkin review score for host is superhost vs not
-listings %>% group_by(host_is_superhost) %>% summarise(avg_score_checkin = mean(review_scores_checkin))
-
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r Correlation Table, echo=FALSE}
+ #We can discuss which variable to use
+cor_tab <- listings %>%
+  select(review_scores_rating, avg_price, bedrooms_per_person, host_response_rate) %>%
+  correlate() %>%
+  shave(upper = TRUE) %>%
+  fashion(decimals = 2, na_print = "—")
+
+cor_tab %>%
+  kable(
+    caption = "Correlations between Selected Variables",
+    col.names = c("Variable", "Review Score", "Average Price", "Bedrooms per Person", "Host Response Rate")
+  )
+```
