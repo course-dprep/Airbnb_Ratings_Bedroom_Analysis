@@ -1,7 +1,9 @@
 ---
 title: "data_exploration"
 autor: "team 6"
-output: pdf_document 
+output: 
+  pdf_document:
+    output: "../../gen/temp"
 date: "2023-10-04"
 ---
 
@@ -14,11 +16,13 @@ knitr::opts_chunk$set(echo = TRUE)
 # Loading in packages
 library(tinytex)
 library(tidyverse)
+library(stringr)
 ```
 
 # Loading in the downloaded data
-```{r, echo=FALSE}
+```{r, include=FALSE}
 listings <- read_csv("../../data/listings.csv")
+listings <- listings %>% mutate(name = str_replace(name, "★", ""))
 ```
 
 # Data Exploration
