@@ -2,9 +2,7 @@
 title: "Analysis AirBnB"
 author: "Team 6"
 date: "`r Sys.Date()`"
-output:
-  html_document:
-    df_print: paged
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -30,6 +28,8 @@ Reg_Control <- lm(review_scores_rating ~ avg_price + host_response_rate + host_i
 Reg_Full <- lm(review_scores_rating ~ bedrooms_per_person + avg_price + host_response_rate + host_identity_verified + experience_of_hosts_in_years + in_city_center, listings)
 ```
 
+\newpage
+
 # Analysing the Effects of Bedrooms per Person on AirBnB Ratings
 
 The following tables show the descriptive statistics of our models, and a regression analysis of the control model and the full model. 
@@ -44,14 +44,16 @@ tab_01 = data.frame(
 )
 ```
 
-```{r Descriptive Statistics, Linear Regressions, echo=FALSE}
+```{r, echo=FALSE}
 kable(
   tab_01,
   col.names = c("Variable", "Mean", "SD", "Min", "Max"),
   digits = 3,
   caption = sprintf("Means, Standard Deviations, Minima, and Maxima of all variables used in the full regression analysis. n = %d ", num_observations)
 )
+```
 
+```{r, echo=FALSE}
 Reg_Control %>%
   tidy() %>%
   mutate(
@@ -64,7 +66,9 @@ Reg_Control %>%
     digits = c(0, 3, 3, 2, 3),
     align = c("l", "r", "r", "r", "r")
   )
+```
 
+```{r, echo=FALSE}
 Reg_Full %>%
   tidy() %>%
   mutate(
