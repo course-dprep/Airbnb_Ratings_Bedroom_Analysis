@@ -2,7 +2,9 @@
 title: "Analysis AirBnB"
 author: "Team 6"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -14,6 +16,7 @@ library(tidyr)
 library(broom)
 library(corrr)
 library(kableExtra)
+
 
 # loading the dataset
 listings <- read_csv('../../gen/temp/listings_cleaned.csv')

@@ -60,7 +60,7 @@ A make file will automate this process.
 
 ## Dependencies
 - R 
-- R packages: `install.packages("tidyverse")` `install.packages("here")` `install.packages("tinytex")` `install.packages("kableExtra")` `install.packages("tidyR")` `install.packages("broom")`
+- R packages: `install.packages("tidyverse")` `install.packages("here")` `install.packages("tinytex")` `install.packages("kableExtra")` `install.packages("tidyR")` `install.packages("broom")` `install.packages("corrr")`
 - [Gnu Make](https://tilburgsciencehub.com/get/make) 
 - [TeX distribution](https://tilburgsciencehub.com/get/latex/?utm_campaign=referral-short)
 - For the `makefile` to work, R, Gnu make and the TeX distribution (specifically `pdflatex`) need to be made available in the system path 
