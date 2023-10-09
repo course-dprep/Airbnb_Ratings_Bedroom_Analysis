@@ -12,10 +12,12 @@ knitr::opts_chunk$set(echo = TRUE)
 # Loading in packages
 library(tinytex)
 library(tidyverse)
-library(kableExtra)
 library(tidyr)
 library(broom)
 library(corrr)
+library(kableExtra)
+
+
 # loading the dataset
 listings <- read_csv('../../gen/temp/listings_cleaned.csv')
 
