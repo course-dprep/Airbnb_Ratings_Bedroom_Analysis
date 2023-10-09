@@ -100,7 +100,7 @@ install.packages("corrr")
 
 ## Authors
 Team 6: 
-- [Volkan Selin Cantürk](https://github.com/vscanturk),        e-mail: v.s.canturk@tilburguniversity.edu 
+- [Volkan Selim Cantürk](https://github.com/vscanturk),        e-mail: v.s.canturk@tilburguniversity.edu 
 - [Konstantinos Loizidis](https://github.com/Dinos-Ano),           e-mail: k.loizidis@tilburguniversity.edu 
 - [Bram Teunissen](https://github.com/bram-teunissen),        e-mail: b.teunissen@tilburguniversity.edu
 - [Tijl de Veer](https://github.com/TijldeVeer),     e-mail: t.deveer@tilburguniversity.edu 
