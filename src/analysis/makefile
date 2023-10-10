@@ -1,8 +1,7 @@
-DATA = ../../data
-TEMP = ../../gen/temp
 OUTPUT = ../../gen/output
 
-all: $(TEMP)/testplot.pdf
+all: $(OUTPUT)/analysis.html
 
-$(TEMP)/testplot.pdf: $(TEMP)/listings_cleaned.csv analyze.R
-	R --vanilla < analyze.R
+$(OUTPUT)/analysis.html: analysis.rmd
+	R -e "dir.create('$(OUTPUT)', recursive = TRUE)"
+	R -e "rmarkdown::render('analysis.rmd', output_dir='../../gen/output')"

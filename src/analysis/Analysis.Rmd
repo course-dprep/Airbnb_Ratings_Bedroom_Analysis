@@ -2,7 +2,9 @@
 title: "Analysis AirBnB"
 author: "Team 6"
 date: "`r Sys.Date()`"
-output: pdf_document
+output:
+  html_document:
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
@@ -15,7 +17,6 @@ library(broom)
 library(corrr)
 library(kableExtra)
 
-
 # loading the dataset
 listings <- read_csv('../../gen/temp/listings_cleaned.csv')
 
@@ -23,9 +24,20 @@ listings <- read_csv('../../gen/temp/listings_cleaned.csv')
 num_observations <- nrow(listings)
 
 # defining linear models
-
 Reg_Control <- lm(review_scores_rating ~ avg_price + host_response_rate + host_identity_verified + experience_of_hosts_in_years + in_city_center, listings)
 Reg_Full <- lm(review_scores_rating ~ bedrooms_per_person + avg_price + host_response_rate + host_identity_verified + experience_of_hosts_in_years + in_city_center, listings)
+
+# Defining table
+tab_01 = data.frame(
+    Variable = c("Review Score", "Bedrooms per Person", "Average Price per Night", "Host Response Rate", "Host Verified", "Host Experience (Years)", "Location: City Centre"),
+    Mean = c(mean(listings$review_scores_rating), mean(listings$bedrooms_per_person), mean(listings$avg_price), mean(listings$host_response_rate), mean(listings$host_identity_verified), mean(listings$experience_of_hosts_in_years), mean(listings$in_city_center)), 
+    SD = c(sd(listings$review_scores_rating), sd(listings$bedrooms_per_person), sd(listings$avg_price), sd(listings$host_response_rate), sd(listings$host_identity_verified), sd(listings$experience_of_hosts_in_years), sd(listings$in_city_center)),
+    Min = c(min(listings$review_scores_rating), min(listings$bedrooms_per_person), min(listings$avg_price), min(listings$host_response_rate), min(listings$host_identity_verified), min(listings$experience_of_hosts_in_years), min(listings$in_city_center)),
+    Max = c(max(listings$review_scores_rating), max(listings$bedrooms_per_person), max(listings$avg_price), max(listings$host_response_rate), max(listings$host_identity_verified), max(listings$experience_of_hosts_in_years), max(listings$in_city_center))
+)
+
+# Defining the correlation table
+cor_tab <- listings %>% select(review_scores_rating, avg_price, bedrooms_per_person, host_response_rate) %>% correlate() %>% shave(upper = TRUE) %>% fashion(decimals = 2, na_print = "—")
 ```
 
 \newpage
@@ -35,16 +47,6 @@ Reg_Full <- lm(review_scores_rating ~ bedrooms_per_person + avg_price + host_res
 The following tables show the descriptive statistics of our models, and a regression analysis of the control model and the full model. 
 
 ```{r tables, echo=FALSE}
-tab_01 = data.frame(
-    Variable = c("Review Score", "Bedrooms per Person", "Average Price per Night", "Host Response Rate", "Host Verified", "Host Experience (Years)", "Location: City Centre"),
-    Mean = c(mean(listings$review_scores_rating), mean(listings$bedrooms_per_person), mean(listings$avg_price), mean(listings$host_response_rate), mean(listings$host_identity_verified), mean(listings$experience_of_hosts_in_years), mean(listings$in_city_center)), 
-    SD = c(sd(listings$review_scores_rating), sd(listings$bedrooms_per_person), sd(listings$avg_price), sd(listings$host_response_rate), sd(listings$host_identity_verified), sd(listings$experience_of_hosts_in_years), sd(listings$in_city_center)),
-    Min = c(min(listings$review_scores_rating), min(listings$bedrooms_per_person), min(listings$avg_price), min(listings$host_response_rate), min(listings$host_identity_verified), min(listings$experience_of_hosts_in_years), min(listings$in_city_center)),
-    Max = c(max(listings$review_scores_rating), max(listings$bedrooms_per_person), max(listings$avg_price), max(listings$host_response_rate), max(listings$host_identity_verified), max(listings$experience_of_hosts_in_years), max(listings$in_city_center))
-)
-```
-
-```{r, echo=FALSE}
 kable(
   tab_01,
   col.names = c("Variable", "Mean", "SD", "Min", "Max"),
@@ -95,17 +97,9 @@ ggplot(data = listings, aes(x = bedrooms_per_person, y = review_scores_rating)) 
   ggtitle("Scatter Plot of Bedrooms per Person vs. Review Score") # Add a title
 
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Correlation table
 
 ```{r Correlation Table, echo=FALSE}
- #We can discuss which variable to use
-cor_tab <- listings %>%
-  select(review_scores_rating, avg_price, bedrooms_per_person, host_response_rate) %>%
-  correlate() %>%
-  shave(upper = TRUE) %>%
-  fashion(decimals = 2, na_print = "—")
-
 cor_tab %>%
   kable(
     caption = "Correlations between Selected Variables",
