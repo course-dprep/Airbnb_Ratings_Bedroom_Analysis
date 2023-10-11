@@ -2,9 +2,8 @@
 title: "data_exploration"
 autor: "team 6"
 output:
-  pdf_document:
+  html_document:
     latex_engine: xelatex
-date: "`r Sys.Date()`"
 ---
 
 ```{r setup, include=FALSE}
