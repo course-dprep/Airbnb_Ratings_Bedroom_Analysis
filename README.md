@@ -1,23 +1,23 @@
 
 # Space Matters: User Ratings and the Size of Airbnb Listings
 
-This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are the rating of the accomodation and the amount of bedrooms per person. In this README a reasoning will be given why we chose the two variables, the control variables, how we will go about analysing the data, and future uses for our created dataset.
+This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are the rating of the accommodation and the amount of bedrooms per person. In this README a reasoning will be given why we chose the two variables, the control variables, how we will go about analysing the data, and future uses for our created dataset.
 
 # Research Motivation
 
-The purpose of this project is to find out if the amount of bedrooms per person has a significant effect on ratings. We chose this variable as a proxy for size. Larger houses will likely have more bedrooms available for the people it accomodates. The question then becomes if people mind having more space to themselves, and whether this increases ratings. This is important to learn about travellers preferences on AirBnB. Is it a platform where size of the accomodation is valued? Do people mind if they have to share bedrooms with other people of their group? Does the rating of the accomodation deteriorate quickly if the number becomes three or four to one? By looking into the relationship between bedrooms per person and the rating we will get some indication of where preferences lie.
+The purpose of this project is to find out if the amount of bedrooms per person has a significant effect on ratings. We chose this variable as a proxy for size. Larger houses will likely have more bedrooms available for the people it accomodates. The question then becomes if people mind having more space to themselves, and whether this increases ratings. This is important to learn about travellers preferences on AirBnB. Is it a platform where size of the accommodation is valued? Do people mind if they have to share bedrooms with other people of their group? Does the rating of the accommodation deteriorate quickly if the number becomes three or four to one? By looking into the relationship between bedrooms per person and the rating we will get some indication of where preferences lie.
 
 # Research Question
 
-- Does the number of bedrooms per person have a significant effect on accomodation ratings?
+- Does the number of bedrooms per person have a significant effect on accommodation ratings?
 
 # Research Method
 
-For this project, we will grab data from the InsideAirbnb project. More specifically, we will use listing scraping data, which we will prepare for analysis in RStudio. To test if the price per night has a significant effect on accomodation ratings, we will employ a regression analysis based on a linear model. This will allow us to look into the relationship better and lets us include control variables. This linear model will have the following variables.
+For this project, we will grab data from the InsideAirbnb project. More specifically, we will use listing scraping data, which we will prepare for analysis in RStudio. To test if the price per night has a significant effect on accommodation ratings, we will employ a regression analysis based on a linear model. This will allow us to look into the relationship better and lets us include control variables. This linear model will have the following variables.
 
 Dependent variable:
   Review_score_rating
-    -Found by looking into the name variable, it contains the rating of every accomodation. This is a variable that has values between 20 and 100. 
+    -Found by looking into the name variable, it contains the rating of every accommodation. This is a variable that has values between 20 and 100. 
 
 Independent variable:
    bedrooms_per_person
@@ -33,7 +33,7 @@ Control variables:
     The price per night, expressed numerically, measured in dollars.
 
   host_response_rate
-    The percentage of how fast the host response to its customers. Higher the response rate may indicate an higher accomodation rating.
+    The percentage of how fast the host response to its customers. Higher the response rate may indicate an higher accommodation rating.
 
   host_identity_verfied
     Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
@@ -42,7 +42,7 @@ Control variables:
     The number of years the host works as a host. The higher the number of years of expirience, the more satisfied the customers, the higher the rating they will give.
 
   in_city_center
-    Whether the accomodation is placed in the city center. If the accomodation is, the customer will be more satisfied with the location, which will conclude in a higher rating.
+    Whether the accommodation is placed in the city center. If the accommodation is, the customer will be more satisfied with the location, which will conclude in a higher rating.
     
 
 # Research Workflow
@@ -80,11 +80,17 @@ You can follow the general installation guides on http://tilburgsciencehub.com/.
 - To knit RMarkdown documents, make sure you have installed Pandoc using the [installation guide](https://pandoc.org/installing.html) on their website.
 
 - For R, make sure you have installed the following packages:
+NOTE (as of 11/10/2023): svglite may give the following error
+"There is a binary version available but the source version is later:
+        binary source needs_compilation"
+Install the binary version by clicking no on the prompt. This should be version 2.1.1.
+
 ```
 install.packages("tidyverse")
 install.packages("data.table")
 install.packages("here")
 install.packages("tinytex")
+install.packages("svglite")
 install.packages("kableExtra") 
 install.packages("tidyR")
 install.packages("broom")

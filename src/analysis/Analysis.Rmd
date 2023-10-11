@@ -1,10 +1,11 @@
 ---
-title: "Analysis AirBnB"
+title: 'Space Matters: User Ratings and the Size of Airbnb Listings'
 author: "Team 6"
 date: "`r Sys.Date()`"
 output:
   html_document:
     latex_engine: xelatex
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,6 +16,7 @@ library(tidyverse)
 library(tidyr)
 library(broom)
 library(corrr)
+library(svglite)
 library(kableExtra)
 
 # loading the dataset
@@ -41,8 +43,25 @@ cor_tab <- listings %>% select(review_scores_rating, avg_price, bedrooms_per_per
 ```
 
 \newpage
+# Introduction & Model Specification
+This project will look at the following research question:
 
-# Analysing the Effects of Bedrooms per Person on AirBnB Ratings
+\newline
+
+*"Does the number of bedrooms per person have a significant effect on accommodation ratings?"*
+
+\newline
+
+For further details on motivation, please refer to our GitHub page or the README file.
+
+\newline
+
+##Model Specification
+1 2 3
+
+\newpage
+
+# Descriptive Statistics
 
 The following tables show the descriptive statistics of our models, and a regression analysis of the control model and the full model. 
 
@@ -52,7 +71,8 @@ kable(
   col.names = c("Variable", "Mean", "SD", "Min", "Max"),
   digits = 3,
   caption = sprintf("Means, Standard Deviations, Minima, and Maxima of all variables used in the full regression analysis. n = %d ", num_observations)
-)
+) %>%
+  kable_material(c("striped", "hover"))
 ```
 
 ```{r, echo=FALSE}
@@ -67,7 +87,8 @@ Reg_Control %>%
     col.names = c("Predictor", "B", "SE", "t", "p"),
     digits = c(0, 3, 3, 2, 3),
     align = c("l", "r", "r", "r", "r")
-  )
+  ) %>%
+  kable_material(c("striped", "hover"))
 ```
 
 ```{r, echo=FALSE}
@@ -82,7 +103,8 @@ Reg_Full %>%
     col.names = c("Predictor", "B", "SE", "t", "p"),
     digits = c(0, 3, 3, 2, 3),
     align = c("l", "r", "r", "r", "r")
-  )
+  ) %>%
+  kable_material(c("striped", "hover"))
 ```
 
 \newpage
