@@ -11,7 +11,7 @@ reviews <- read_csv("../../data/reviews.csv")
 # Removing all observations with less than 25 reviews (so individual opinions won't have to much of an impact)
 listings <- listings %>% filter(number_of_reviews >= 25)
 
-# remove $ sign from price and compute avg price per night for listings
+# remove $ sign from price and compute avg price per night for listings.
 calendar_avg_price_night <- calendar %>% mutate(price = as.numeric(str_replace_all(price, "[^0-9.]", ""))) %>%
   group_by(listing_id) %>%
   summarise(avg_price = mean(price, na.rm = TRUE))
@@ -77,6 +77,9 @@ unique_neighborhoods <- unique(listings_selected$neighbourhood_cleansed)
 
 # Remove missing values from variables we are using
 listings_selected <- listings_selected[complete.cases(listings_selected$bedrooms_per_person, listings_selected$host_response_rate), ]
+
+# Removing extreme values from the bedrooms per person variable
+listings_selected <- listings_selected[listings_selected$bedrooms_per_person <= 3, ]
 
 # Creating the gen and temp folders
 script_gen <- here::here()
