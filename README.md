@@ -94,10 +94,7 @@ install.packages("corrr")
 
 ```
 
-- NOTE (as of 11/10/2023): svglite may give the following error
-  "There is a binary version available but the source version is later:
-        binary source needs_compilation"
-  Install the binary version by clicking no on the prompt. This should be version 2.1.1.
+- NOTE (as of 11/10/2023): svglite may give an error regarding binary and source versions. Install the binary version by clicking no on the prompt. This should be version 2.1.1.
 
 ## Notes
 - `make clean` removes all unncessary temporary files. 
