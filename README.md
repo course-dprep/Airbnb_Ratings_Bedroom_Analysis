@@ -87,11 +87,17 @@ install.packages("data.table")
 install.packages("here")
 install.packages("tinytex")
 install.packages("svglite")
-install.packages("kableExtra") 
+install.packages("devtools")
 install.packages("tidyR")
 install.packages("broom")
 install.packages("corrr")
 
+```
+
+- Install the patched version of kableExtra, to make sure the likelihood of errors is lowest. Use the code below, update all by going for option 1 when R studio asks for it:
+
+```
+devtools::install_github("kupietz/kableExtra")
 ```
 
 - NOTE (as of 11/10/2023): svglite may give an error regarding binary and source versions. Install the binary version by clicking no on the prompt. This should be version 2.1.1.
