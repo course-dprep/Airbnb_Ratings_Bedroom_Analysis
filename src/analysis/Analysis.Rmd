@@ -141,8 +141,7 @@ Reg_Full %>%
 
 \newpage
 
-# Tables for a better understanding of the data
-Here we will show a few plots to create a better overview of the data.
+# Plotting Review Scores and Bedrooms per Person
 
 ```{r Plots, echo=FALSE, message=FALSE}
 ggplot(data = listings, aes(x = bedrooms_per_person, y = review_scores_rating)) +
