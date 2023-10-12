@@ -105,7 +105,7 @@ devtools::install_github("kupietz/kableExtra")
 ## Guidline for Running 
 ### Step-by-step
 To run the code, follow these instructions:
-1. Fork this repository
+1. Fork this repository.
 2. Open your command line / terminal and run the following code:
 ```
 git clone https://github.com/{your username}/Airbnb_Analysis_Team6.git 
@@ -114,9 +114,9 @@ git clone https://github.com/{your username}/Airbnb_Analysis_Team6.git
 ```
 make
 ```
-4. When make has succesfully run all the code, it will generate the required Pdf, Markdown files for reaching the analysis of project concludes.
+4. When make has succesfully run all the code, it will generate the required pdf, Markdown files for reaching the analysis of the project's conslusions.
 
-5. To clean the data of all raw and unnecessary data files created during the pipeline, run the following code in the command line / terminal: 
+5. To clean the data of all raw and unnecessary data files created during the pipeline and to make a fresh start, run the following code in the command line / terminal: 
 ```
 make clean
 ```
