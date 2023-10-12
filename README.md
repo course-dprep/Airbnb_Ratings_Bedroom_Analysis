@@ -115,7 +115,7 @@ git clone https://github.com/course-dprep/Airbnb_Analysis_Team6
 ```
 make
 ```
-4. When make has succesfully run all the code, it will generate the required pdf, Markdown files for reaching the analysis of the project's conslusions.
+4. When make has succesfully run all the code, it will generate the required html, Markdown files for reaching the analysis of the project's conslusions.
 
 5. To clean the data of all raw and unnecessary data files created during the pipeline and to make a fresh start, run the following code in the command line / terminal: 
 ```
@@ -125,6 +125,7 @@ make clean
 ## Notes
 - `make clean` removes all unncessary temporary files. 
 - Tested under Windows 11, Windows 10, and MacOS
+- Our output documents use html for better compatibility with kable
 - IMPORTANT: In `makefile`, when using `\` to split code into multiple lines, no space should follow `\`. Otherwise Gnu make aborts with error 193. 
 - Many possible improvements remain. Comments and contributions are welcome!
 
