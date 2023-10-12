@@ -109,7 +109,7 @@ To run the code, follow these instructions:
 1. Fork this repository.
 2. Open your command line / terminal and run the following code:
 ```
-git clone https://github.com/{your username}/Airbnb_Analysis_Team6.git 
+git clone https://github.com/course-dprep/Airbnb_Analysis_Team6
 ```
 3. Set your working directory to `Airbnb_Analysis_Team6` and run the following command:
 ```
