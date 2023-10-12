@@ -102,6 +102,25 @@ devtools::install_github("kupietz/kableExtra")
 
 - NOTE (as of 11/10/2023): svglite may give an error regarding binary and source versions. Install the binary version by clicking no on the prompt. This should be version 2.1.1.
 
+## Guidline for Running 
+### Step-by-step
+To run the code, follow these instructions:
+1. Fork this repository
+2. Open your command line / terminal and run the following code:
+```
+git clone https://github.com/{your username}/Airbnb_Analysis_Team6.git 
+```
+3. Set your working directory to `Airbnb_Analysis_Team6` and run the following command:
+```
+make
+```
+4. When make has succesfully run all the code, it will generate the required Pdf, Markdown files for reaching the analysis of project concludes.
+
+5. To clean the data of all raw and unnecessary data files created during the pipeline, run the following code in the command line / terminal: 
+```
+make clean
+```
+
 ## Notes
 - `make clean` removes all unncessary temporary files. 
 - Tested under Windows 11, Windows 10, and MacOS
