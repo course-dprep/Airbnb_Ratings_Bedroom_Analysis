@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Loading in packages
 library(tinytex)
 library(tidyverse)
+library(rmarkdown)
 library(tidyr)
 library(knitr)
 library(broom)
@@ -42,7 +43,11 @@ tab_01 = data.frame(
 )
 
 # Defining the correlation table
-cor_tab <- listings %>% select(review_scores_rating, bedrooms_per_person, avg_price, host_response_rate, host_identity_verified, experience_of_hosts_in_years, in_city_center) %>% correlate() %>% shave(upper = TRUE) %>% fashion(decimals = 2, na_print = "—")
+cor_tab = listings %>% 
+  select(review_scores_rating, bedrooms_per_person, avg_price, host_response_rate, host_identity_verified, experience_of_hosts_in_years, in_city_center) %>% 
+  correlate() %>% 
+  shave(upper = TRUE) %>% 
+  fashion(decimals = 2, na_print = "—")
 ```
 
 \newpage
@@ -92,12 +97,10 @@ kable(
 ```
 
 ```{r Correlation Table, echo=FALSE}
-cor_tab %>%
-  rownames_to_column(var = "Measure") %>%  
-  kable(
-    caption = "Correlations",
-    col.names = c("Measure", "1. Review Score", "2. Bedrooms per Person", "3. Average Price per Night", "4. Host Response Rate", "5. Host Verified", "6. Host Experience", "7. Location: City Centre")
-  ) %>%
+kable(
+  cor_tab,
+  caption = "Correlations between variables"
+) %>%
   kable_material(c("striped", "hover"))
 ```
 
