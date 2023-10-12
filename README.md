@@ -92,7 +92,7 @@ install.packages("devtools")
 install.packages("tidyR")
 install.packages("broom")
 install.packages("corrr")
-
+install.packages("rmarkdown")
 ```
 
 - Install the patched version of kableExtra, to make sure the likelihood of errors is lowest. Use the code below, update all by going for option 1 when R studio asks for it:
