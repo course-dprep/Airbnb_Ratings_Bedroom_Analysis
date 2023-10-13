@@ -3,47 +3,67 @@
 
 This assignment will be about Airbnb and the relationship between two variables. More specifically, the variables that will be analyzed are the rating of the accommodation and the amount of bedrooms per person. In this README a reasoning will be given why we chose the two variables, the control variables, how we will go about analysing the data, and future uses for our created dataset.
 
+<br>
+
 # Research Motivation
 
-The purpose of this project is to find out if the amount of bedrooms per person has a significant effect on ratings. We chose this variable as a proxy for size. Larger houses will likely have more bedrooms available for the people it accomodates. The question then becomes if people mind having more space to themselves, and whether this increases ratings. This is important to learn about travellers preferences on AirBnB. Is it a platform where size of the accommodation is valued? Do people mind if they have to share bedrooms with other people of their group? Does the rating of the accommodation deteriorate quickly if the number becomes three or four to one? By looking into the relationship between bedrooms per person and the rating we will get some indication of where preferences lie.
+The purpose of this project is to find out if the amount of bedrooms per person has a significant effect on ratings. We chose this variable as a proxy for size. Larger houses will likely have more bedrooms available for the people it accomodates. The question then becomes if people mind having more space to themselves, and whether this increases ratings. This is important to learn about travellers preferences on AirBnB. By looking into the relationship between bedrooms per person and the rating we will get some indication of where preferences lie.
+
+<br>
 
 # Research Question
 
 - Does the number of bedrooms per person have a significant effect on accommodation ratings?
 
+<br>
+
 # Research Method
 
 For this project, we will grab data from the InsideAirbnb project. More specifically, we will use listing scraping data, which we will prepare for analysis in RStudio. To test if the price per night has a significant effect on accommodation ratings, we will employ a regression analysis based on a linear model. This will allow us to look into the relationship better and lets us include control variables. This linear model will have the following variables.
 
-Dependent variable:
-  Review_score_rating
-    -Found by looking into the name variable, it contains the rating of every accommodation. This is a variable that has values between 20 and 100. 
+<br>
 
-Independent variable:
-   bedrooms_per_person
-    -The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accommodates.
+**Dependent variable:**
 
-To make sure that the found effect is real and not actually a result of a missing factor, we are including control variables. There is no sweet spot for the number of control variables, so we will use that what the dataset provides us and what makes sense to include. 
+*Review_score_rating*
 
-Control variables:
+Found by looking into the name variable, it contains the rating of every accommodation. This is a variable that has values between 20 and 100. 
 
-*We are not choosing number_of_reviews due to a minimum amount of reviews filter we already applied to our dataset. The minimum amount of reviews is 25. 
+<br>
 
- avg_price
-    The price per night, expressed numerically, measured in dollars.
+**Independent variable:**
 
-  host_response_rate
-    The percentage of how fast the host response to its customers. Higher the response rate may indicate an higher accommodation rating.
-
-  host_identity_verfied
-    Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
-
-  experience_of_host_in_years 
-    The number of years the host works as a host. The higher the number of years of expirience, the more satisfied the customers, the higher the rating they will give.
-
-  in_city_center
-    Whether the accommodation is placed in the city center. If the accommodation is, the customer will be more satisfied with the location, which will conclude in a higher rating.
+*bedrooms_per_person*
     
+The amount of bedrooms per person. More bedrooms may indicate that the house is nicer. Calculated by dividing bedrooms by accommodates.
+
+<br>
+
+**Control variables:**
+
+**(We are not choosing number_of_reviews as a variable due to a minimum amount of reviews filter we already applied to our dataset. The minimum amount of reviews is 25.)**
+
+*avg_price*
+
+The price per night, expressed numerically, measured in dollars.
+
+*host_response_rate*
+
+The percentage of how fast the host response to its customers. Higher the response rate may indicate an higher accommodation rating.
+
+*host_identity_verfied*
+
+Measured by a dummy, whether a host has their identity verified. Non-verified hosts might be less trustworthy.
+
+*experience_of_host_in_years*
+
+The number of years the host works as a host. The higher the number of years of expirience, the more satisfied the customers, the higher the rating they will give.
+
+*in_city_center*
+
+Whether the accommodation is placed in the city center. If the accommodation is, the customer will be more satisfied with the location, which will conclude in a higher rating.
+    
+<br>
 
 # Research Workflow
 
@@ -53,11 +73,13 @@ The first stage is getting the data. An Rscript gets the data from InsideAirBnB,
 
 The second stage is cleaning and preparing the data for analysis. Another Rscript processes the data, creates the neccesary variables, and makes sure all duplicates and NAs are removed. It then creates a new combined dataset in a new folder.
 
-The third stage is analysing the data and presenting the results. An Rmarkdown file takes care of this process. It first defines the linear models, one for control and one with the variable of interest. Various graphs will be added for extra clarity about the data, along with descriptive statistics and the results of our models. The results will be rendered as a PDF by using LaTeX.
+The third stage is analysing the data and presenting the results. An Rmarkdown file takes care of this process. It first defines the linear models, one for control and one with the variable of interest. Various graphs will be added for extra clarity about the data, along with descriptive statistics and the results of our models. The results will be rendered as an html file to ensure compatibility with kableExtra.
 
-A make file will automate this process.
+A make file will automate this process for others to run on their own computers.
 
 *After completion, find the results in the output folder. \gen\output\analysis.html*
+
+<br>
 
 ## Repository overview
 
@@ -69,6 +91,7 @@ A make file will automate this process.
 - README.md
 - makefile
 ```
+<br>
 
 ## Dependencies
 
@@ -102,6 +125,8 @@ devtools::install_github("kupietz/kableExtra")
 
 - NOTE (as of 11/10/2023): svglite may give an error regarding binary and source versions. Install the binary version by clicking no on the prompt. This should be version 2.1.1.
 
+<br>
+
 ## Guidline for Running 
 ### Step-by-step
 To run the code, follow these instructions:
@@ -114,12 +139,14 @@ git clone https://github.com/course-dprep/Airbnb_Analysis_Team6
 ```
 make
 ```
-4. When make has succesfully run all the code, it will generate the required html, Markdown files for reaching the analysis of the project's conclusions.
+4. When make has succesfully run all the code, it will generate the required html files for reaching the analysis of the project's conclusions.
 
 5. To remove all newly created files and start over, run the following code in the command line / terminal: 
 ```
 make clean
 ```
+
+<br>
 
 ## Notes
 - `make clean` removes all unncessary temporary files. 
@@ -127,6 +154,8 @@ make clean
 - Our output documents use html for better compatibility with kable
 - IMPORTANT: In `makefile`, when using `\` to split code into multiple lines, no space should follow `\`. Otherwise Gnu make aborts with error 193. 
 - Many possible improvements remain. Comments and contributions are welcome!
+
+<br>
 
 ## Authors
 Team 6: 
