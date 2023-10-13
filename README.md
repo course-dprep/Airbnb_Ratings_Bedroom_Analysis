@@ -76,9 +76,8 @@ You can follow the general installation guides on http://tilburgsciencehub.com/.
 
 - R. [Installation guide](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/r/).
 - Make. [Installation guide](https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/).
-- Pandoc [Latest release](https://pandoc.org/installing.html).
+- Pandoc. [Latest release](https://pandoc.org/installing.html).
 - [TeX distribution](https://tilburgsciencehub.com/get/latex/?utm_campaign=referral-short)
-- To knit RMarkdown documents, make sure you have installed Pandoc using the [installation guide](https://pandoc.org/installing.html) on their website.
 
 - For R, make sure you have installed the following packages:
 
