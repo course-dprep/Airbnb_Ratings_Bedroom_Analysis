@@ -60,11 +60,9 @@ A make file will automate this process.
 ## Repository overview
 
 ```
-- .gitignore
 - src
   - analysis
   - data-preparation
-  - paper
 - .gitignore
 - README.md
 - makefile
