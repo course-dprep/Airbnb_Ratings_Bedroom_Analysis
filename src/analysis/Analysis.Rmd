@@ -4,8 +4,6 @@ author: "Team 6"
 date: "`r Sys.Date()`"
 output:
   html_document:
-    latex_engine: xelatex
-  pdf_document: default
 ---
 
 ```{r setup library, include=FALSE}
