@@ -108,13 +108,11 @@ To run the code, follow these instructions:
 1. Fork this repository.
 2. Open your command line / terminal and run the following code:
 ```
-git clone https://github.com/course-dprep/Airbnb_Analysis_Team6
+git clone https://github.com/course-dprep/Airbnb_Ratings_Bedroom_Analysis
 ```
-3. Set your working directory to `Airbnb_Analysis_Team6` and run the following command:
+3. Run the following command: make
 ```
-make
-```
-4. When make has succesfully run all the code, it will generate the required html, Markdown files for reaching the analysis of the project's conclusions.
+4. When make has succesfully ran all the code, it will generate the required html, Markdown files for reaching the analysis of the project's conclusions.
 
 5. To remove all newly created files and start over, run the following code in the command line / terminal: 
 ```
