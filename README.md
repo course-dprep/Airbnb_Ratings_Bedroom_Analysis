@@ -57,6 +57,8 @@ The third stage is analysing the data and presenting the results. An Rmarkdown f
 
 A make file will automate this process.
 
+*After completion, find the results in the output folder. \gen\output\analysis.html*
+
 ## Repository overview
 
 ```
