@@ -19,7 +19,7 @@ The purpose of this project is to find out if the amount of bedrooms per person 
 
 # Research Method
 
-For this project, we will grab data from the InsideAirbnb project. More specifically, we will use listing scraping data, which we will prepare for analysis in RStudio. To test if the price per night has a significant effect on accommodation ratings, we will employ a regression analysis based on a linear model. This will allow us to look into the relationship better and lets us include control variables. This linear model will have the following variables.
+For this project, we will grab data from the InsideAirbnb project. More specifically, we will use listing scraping data, which we will prepare for analysis in RStudio. To test if bedrooms per person has a significant effect on accommodation ratings, we will employ a regression analysis based on a linear model. This will allow us to look into the relationship better and lets us include control variables. This linear model will have the following variables.
 
 <br>
 
