@@ -84,6 +84,10 @@ A make file will automate this process for others to run on their own computers.
 ## Repository overview
 
 ```
+- data
+- gen
+  - output
+  - temp
 - src
   - analysis
   - data-preparation
